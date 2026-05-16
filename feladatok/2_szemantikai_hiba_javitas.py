@@ -35,8 +35,8 @@ def atlagos_szuletesi_ev(tanulok_lista):
         return 0
     osszeg = 0
     for tanulo_szuletesi_ev in tanulok_lista:
-        osszeg += 2026 - tanulo_szuletesi_ev["szuletesi_ev"]
-    return osszeg // len(tanulok_lista)
+        osszeg += tanulo_szuletesi_ev["szuletesi_ev"]
+    return osszeg / len(tanulok_lista)
 
 def atlagos_pontszam(tanulok_lista):
     if not tanulok_lista:
@@ -51,7 +51,7 @@ def nyelvek_gyakorisaga(tanulok_lista):
     for tanulo_nyelv in tanulok_lista:
         nyelv = tanulo_nyelv["nyelv"]
         if nyelv in gyakorisag:
-            gyakorisag[nyelv] -= 1
+            gyakorisag[nyelv] += 1
         else:
             gyakorisag[nyelv] = 1
     return gyakorisag
@@ -68,7 +68,7 @@ def legjobb_tanulo(tanulok_lista):
 def szazas_tanulok(tanulok_lista):
     eredmeny = []
     for tanulo in tanulok_lista:
-        if tanulo["atlagpontszam"] != 100:
+        if tanulo["atlagpontszam"] == 100:
             eredmeny.append(tanulo["nev"])
     return eredmeny
 
